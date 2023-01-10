@@ -1,33 +1,21 @@
-import React, {useState} from "react";
-import Plus from "./components/plus";
-import Minus from "./components/minus";
+import {Routes, Route, useNavigate, Navigate} from "react-router-dom";
+import Login from "./components/login";  
+import React from "react";
+import Layout from "./components/main";
 
-function App() {
-  let [count, setCount] = useState(0)
+function App(props) {
 
-  let plusCount = () => {
-    setCount(prev => prev + 1)
-  }
-
-  let minusCount = () => {
-    setCount(prev => {
-      if(prev === 0) {
-        return 0
-      }
-      else {
-        return prev - 1
-      }
-    })
-
-    }
+  const Navigate = useNavigate()
+  const PageSwitcher = () => {Navigate('/')}
 
   return (
     <div className="App">
-        <div className="counter">{count}</div>
-        <Minus handleClick={minusCount}/>
-        <Plus handleClick={plusCount}/>
+      <Routes>
+        <Route path="/Login" element={<Login switchPage={PageSwitcher()}/>}></Route>
+        <Route path="/" element={<Layout/>}></Route>
+      </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
