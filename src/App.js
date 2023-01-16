@@ -1,18 +1,19 @@
-import {Routes, Route, useNavigate, Navigate} from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 import Login from "./components/login";  
 import React from "react";
 import Layout from "./components/main";
+import Edit from "./components/edit";
 
-function App(props) {
-
-  const Navigate = useNavigate()
-  const PageSwitcher = () => {Navigate('/')}
+function App() {
 
   return (
     <div className="App">
       <Routes>
-        <Route path="/Login" element={<Login switchPage={PageSwitcher()}/>}></Route>
-        <Route path="/" element={<Layout/>}></Route>
+        <Route path="/Login" element={<Login/>}></Route>
+
+        <Route path="/" element={<Layout/>}>
+          <Route path="/editPage" element={<Edit/>}/>
+        </Route>
       </Routes>
     </div>
   )

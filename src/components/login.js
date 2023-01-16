@@ -1,6 +1,12 @@
 import React from "react"
+import { useNavigate} from "react-router-dom"
 
-export default function Login(props) {
+
+export default function Login() {
+  const Navigate = useNavigate()
+  const pageSwitcher = () => {Navigate('/')}
+
+  
 
       return(
         <div>
@@ -10,7 +16,7 @@ export default function Login(props) {
           <div className="Login">
               <input className="Input1" type='text' placeholder="Username" />
               <input className="Input2" type='password' placeholder="Password" />
-              <button className="button-login" onChange={props.swap}>LOGIN</button>
+              <button className="button-login" onClick={pageSwitcher}>LOGIN</button>
           </div>
         </div>
       )
